@@ -8,6 +8,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="../js/nav.js"></script>
   <script defer src="../js/mock-data.js"></script>
   <script defer src="../js/charts.js"></script>
 </head>
@@ -22,15 +23,18 @@
           <div class="text-xs text-slate-600">Tailwind prototype (wireframe → UI)</div>
         </div>
       </div>
-      <nav class="hidden md:flex items-center gap-2 text-sm">
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../index.html">Home</a>
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="overview.html">Overzicht</a>
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project.html">Project</a>
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="medewerker.html">Medewerker</a>
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="portfolio.html">Financieel</a>
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project-fin.html">Fin. status</a>
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="uren.html">Werkzaamheden</a>
-        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../components.html">Componenten</a>
+      <nav class="hidden md:flex items-center gap-2 text-sm ds-topnav">
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../index.html">Home</a>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="klanten.html">Klanten</a>
+        <span class="ds-nav-divider" aria-hidden="true"></span>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="overview.html">Overzicht</a>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="portfolio.html">Portfolio</a>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project.html">Project</a>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project-fin.html">Project financieel</a>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="uren.html">Uren</a>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="medewerker.html">Medewerker</a>
+        <span class="ds-nav-divider" aria-hidden="true"></span>
+        <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../components.html">Componenten</a>
       </nav>
     </div>
   </header>

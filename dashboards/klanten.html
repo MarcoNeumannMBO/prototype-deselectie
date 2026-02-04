@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Klanten – De Selectie</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../styles.css" />
+    <script defer src="../js/nav.js"></script>
+    <script defer src="../js/mock-data.js"></script>
+    <script defer src="../js/crm.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900" data-page="customers">
+    <header class="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">
+        <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-bold ds-mark">DS
+                </div>
+                <div>
+                    <div class="font-semibold leading-tight">De Selectie – Dashboards</div>
+                    <div class="text-xs text-slate-600">Tailwind prototype (wireframe → UI)</div>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-2 text-sm ds-topnav">
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../index.html">Home</a>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="klanten.html">Klanten</a>
+                <span class="ds-nav-divider" aria-hidden="true"></span>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="overview.html">Overzicht</a>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="portfolio.html">Portfolio</a>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project.html">Project</a>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project-fin.html">Project
+                    financieel</a>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="uren.html">Uren</a>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100" href="medewerker.html">Medewerker</a>
+                <span class="ds-nav-divider" aria-hidden="true"></span>
+                <a class="ds-nav-link px-3 py-1.5 rounded-lg hover:bg-slate-100"
+                    href="../components.html">Componenten</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 py-8">
+        <div class="rounded-3xl bg-white ring-1 ring-slate-200 shadow-sm p-6">
+            <div class="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+                <div>
+                    <h1 class="text-2xl font-semibold tracking-tight">Klanten</h1>
+                    <p class="text-slate-600">Zoek een klant en open direct de lopende projecten.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
+                    <div class="w-full sm:w-80">
+                        <label class="text-xs font-semibold text-slate-500 uppercase tracking-wide"
+                            for="customer-search">Zoeken</label>
+                        <input id="customer-search" type="search" placeholder="Naam, segment, contact…"
+                            class="mt-1 w-full rounded-xl bg-slate-50 ring-1 ring-slate-200 px-3 py-2 text-sm outline-none" />
+                    </div>
+                    <label class="flex items-center gap-2 text-sm text-slate-700">
+                        <input id="customer-only-active" type="checkbox" class="h-4 w-4" />
+                        Alleen met lopende projecten
+                    </label>
+                </div>
+            </div>
+
+            <div class="mt-6 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 overflow-hidden">
+                <div class="p-4 border-b border-slate-200 flex items-center justify-between">
+                    <div class="text-sm font-semibold">Klantenlijst</div>
+                    <div class="text-xs text-slate-500"><span id="customer-count">–</span> klanten</div>
+                </div>
+                <div class="overflow-auto">
+                    <table class="min-w-full text-sm">
+                        <thead class="bg-slate-50 text-slate-600">
+                            <tr>
+                                <th class="text-left font-medium px-4 py-2">Klant</th>
+                                <th class="text-left font-medium px-4 py-2">Contact</th>
+                                <th class="text-left font-medium px-4 py-2">Email</th>
+                                <th class="text-right font-medium px-4 py-2">Projecten</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-table-body" class="divide-y divide-slate-200"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="mt-4 ds-disclaimer">Demo: klanten en projecten komen uit mock data (js/mock-data.js).</div>
+        </div>
+    </main>
+
+    <footer class="mt-10 border-t bg-white">
+        <div class="mx-auto max-w-7xl px-4 py-6 text-xs text-slate-600 flex flex-col gap-1">
+            <div>Prototype: statische HTML + Tailwind CDN. Data is mock.</div>
+            <div>Volgende stap: koppeling CRM/Projecten + echte filters.</div>
+        </div>
+    </footer>
+</body>
+
+</html>
