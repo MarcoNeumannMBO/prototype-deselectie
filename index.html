@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>De Selectie – Dashboards (Prototype)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">DS</div>
+        <div>
+          <div class="font-semibold leading-tight">De Selectie – Dashboards</div>
+          <div class="text-xs text-slate-600">Tailwind prototype (wireframe → UI)</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-2 text-sm">
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="index.html">Home</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="dashboards/overview.html">Overzicht</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="dashboards/project.html">Project</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="dashboards/medewerker.html">Medewerker</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="dashboards/portfolio.html">Financieel</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="dashboards/project-fin.html">Fin. status</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="dashboards/uren.html">Werkzaamheden</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="components.html">Componenten</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 py-8">
+    <div class="rounded-3xl bg-white ring-1 ring-slate-200 shadow-sm p-6">
+      <h1 class="text-2xl font-semibold tracking-tight">Tailwind omgeving (prototype)</h1>
+      <p class="mt-2 text-slate-600 max-w-3xl">
+        Dit is een downloadbare, statische prototype-omgeving met alle dashboards en herbruikbare UI-patronen.
+        Ideaal om samen te reviewen en later 1-op-1 over te zetten naar Laravel Blade + Livewire.
+      </p>
+      <div class="mt-6 grid md:grid-cols-3 gap-3">
+        <a class="rounded-2xl bg-slate-900 text-white p-4 hover:opacity-95" href="dashboards/overview.html">
+          <div class="font-semibold">Open Overzicht Dashboard →</div>
+          <div class="text-sm text-white/80 mt-1">Cockpit voor status & bijsturing</div>
+        </a>
+        <a class="rounded-2xl bg-white ring-1 ring-slate-200 p-4 hover:bg-slate-50" href="dashboards/project.html">
+          <div class="font-semibold">Open Project Dashboard →</div>
+          <div class="text-sm text-slate-600 mt-1">Project review: planning, uren, marge</div>
+        </a>
+        <a class="rounded-2xl bg-white ring-1 ring-slate-200 p-4 hover:bg-slate-50" href="components.html">
+          <div class="font-semibold">Bekijk Componenten →</div>
+          <div class="text-sm text-slate-600 mt-1">KPI cards, tables, alerts, panels</div>
+        </a>
+      </div>
+      <div class="mt-6 text-xs text-slate-500">
+        Tip: open <code class="px-1.5 py-0.5 rounded bg-slate-100">index.html</code> in je browser of serve lokaal
+        (bijv. VS Code Live Server).
+
+      </div>
+    </div>
+  </main>
+  <footer class="mt-10 border-t bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-6 text-xs text-slate-600 flex flex-col gap-1">
+      <div>Prototype: statische HTML + Tailwind CDN. Data is mock.</div>
+      <div>Volgende stap: Blade components + Livewire state + echte API-koppeling.</div>
+    </div>
+  </footer>
+</body>
+
+</html>

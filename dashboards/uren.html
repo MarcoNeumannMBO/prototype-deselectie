@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Werkzaamheden & Uren – De Selectie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="../js/mock-data.js"></script>
+  <script defer src="../js/charts.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900" data-dashboard="uren">
+  <header class="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">DS</div>
+        <div>
+          <div class="font-semibold leading-tight">De Selectie – Dashboards</div>
+          <div class="text-xs text-slate-600">Tailwind prototype (wireframe → UI)</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-2 text-sm">
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../index.html">Home</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="overview.html">Overzicht</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project.html">Project</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="medewerker.html">Medewerker</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="portfolio.html">Financieel</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project-fin.html">Fin. status</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="uren.html">Werkzaamheden</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../components.html">Componenten</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 py-8">
+    <div class="rounded-3xl bg-white ring-1 ring-slate-200 shadow-sm p-6">
+      <div class="flex flex-col gap-1">
+        <h1 class="text-2xl font-semibold tracking-tight">Werkzaamheden & Uren</h1>
+        <p class="text-slate-600">Waar gaat de tijd écht heen binnen een project?</p>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-4 gap-4">
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">Totaal uren</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">420</div>
+              <div class="mt-1 text-xs text-slate-500">periode</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-slate-50 text-slate-700 ring-slate-200">NEUTRAL</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">Top activiteit</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">Overleg</div>
+              <div class="mt-1 text-xs text-slate-500">32% van uren</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200">ORANGE</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">Ongepland</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">48</div>
+              <div class="mt-1 text-xs text-slate-500">uren</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200">ORANGE</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">'Overige'</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">21%</div>
+              <div class="mt-1 text-xs text-slate-500">te hoog</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-rose-50 text-rose-700 ring-rose-200">RED</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 grid lg:grid-cols-2 gap-4">
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="text-sm font-medium">Uren per activiteit (balken) (placeholder)</div>
+          <div class="mt-3 h-64 rounded-xl bg-slate-50 ring-1 ring-slate-200 p-2">
+            <canvas id="chart-uren-activiteit" class="w-full h-full" role="img"
+              aria-label="Uren per activiteit"></canvas>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="text-sm font-medium">Verdeling per rol (balken) (placeholder)</div>
+          <div class="mt-3 h-64 rounded-xl bg-slate-50 ring-1 ring-slate-200 p-2">
+            <canvas id="chart-uren-rol" class="w-full h-full" role="img" aria-label="Uren per rol"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6">
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-semibold">⚠️ Signalen & acties</div>
+            <div class="text-xs text-slate-500">mock</div>
+          </div>
+          <ul class="mt-3 grid gap-2">
+
+            <li class="rounded-xl border border-slate-200 bg-white p-3 flex items-start gap-3">
+              <div class="mt-0.5">⚠️</div>
+              <div class="flex-1">
+                <div class="text-sm font-medium">Veel 'Overige' boekingen</div>
+                <div class="text-xs text-slate-600 mt-1">Opschonen activiteitencatalogus + verplichte keuze.</div>
+              </div>
+              <span class="text-xs text-slate-500">Owner: PMO</span>
+            </li>
+
+
+            <li class="rounded-xl border border-slate-200 bg-white p-3 flex items-start gap-3">
+              <div class="mt-0.5">⚠️</div>
+              <div class="flex-1">
+                <div class="text-sm font-medium">Overleg neemt toe</div>
+                <div class="text-xs text-slate-600 mt-1">Check afhankelijkheden, besluitvorming en scope.</div>
+              </div>
+              <span class="text-xs text-slate-500">Owner: Lead</span>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-6">
+        <details class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <summary class="cursor-pointer select-none text-sm font-semibold text-slate-900">Demo notities (BI)</summary>
+          <div class="mt-3 grid gap-3 text-sm text-slate-700">
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Centrale vraag</div>
+              <div class="mt-1">Waar gaat de tijd écht heen binnen een project?</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Bronnen</div>
+              <div class="mt-1 text-xs text-slate-600">Keeping (uren, indicatief). Activiteiten zijn afhankelijk van
+                tagging/discipline in registratie.</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Inzichten</div>
+              <ul class="mt-1 list-disc pl-5 space-y-1">
+                <li>Uren per activiteit → gedrag/patronen (overleg vs build) en frictie.</li>
+                <li>Verdeling per rol → rollenmix en stuurinformatie.</li>
+              </ul>
+            </div>
+            <div class="text-xs text-slate-500">Kijkpunt: veel ‘Overige’ of stijgend overleg → datakwaliteit,
+              afhankelijkheden of scope-probleem.</div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </main>
+  <footer class="mt-10 border-t bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-6 text-xs text-slate-600 flex flex-col gap-1">
+      <div>Prototype: statische HTML + Tailwind CDN. Data is mock.</div>
+      <div>Volgende stap: Blade components + Livewire state + echte API-koppeling.</div>
+    </div>
+  </footer>
+</body>
+
+</html>

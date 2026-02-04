@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project Dashboard – De Selectie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="../js/mock-data.js"></script>
+  <script defer src="../js/charts.js"></script>
+</head>
+
+<body class="bg-slate-50 text-slate-900" data-dashboard="project">
+  <header class="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">DS</div>
+        <div>
+          <div class="font-semibold leading-tight">De Selectie – Dashboards</div>
+          <div class="text-xs text-slate-600">Tailwind prototype (wireframe → UI)</div>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-2 text-sm">
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../index.html">Home</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="overview.html">Overzicht</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project.html">Project</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="medewerker.html">Medewerker</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="portfolio.html">Financieel</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="project-fin.html">Fin. status</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="uren.html">Werkzaamheden</a>
+        <a class="px-3 py-1.5 rounded-lg hover:bg-slate-100" href="../components.html">Componenten</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-4 py-8">
+    <div class="rounded-3xl bg-white ring-1 ring-slate-200 shadow-sm p-6">
+      <div class="flex flex-col gap-1">
+        <h1 class="text-2xl font-semibold tracking-tight">Project Dashboard</h1>
+        <p class="text-slate-600">Waarom staat dit project op oranje/rood en wat doen we eraan?</p>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-4 gap-4">
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">Status</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">🟠</div>
+              <div class="mt-1 text-xs text-slate-500">Reden: scope toename</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200">ORANGE</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">Voortgang</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">62%</div>
+              <div class="mt-1 text-xs text-slate-500">planning: 70%</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200">ORANGE</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">Uren besteed</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">310</div>
+              <div class="mt-1 text-xs text-slate-500">budget: 280</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-rose-50 text-rose-700 ring-rose-200">RED</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="text-sm text-slate-600">Forecast marge</div>
+              <div class="mt-1 text-2xl font-semibold tracking-tight">14%</div>
+              <div class="mt-1 text-xs text-slate-500">start: 20%</div>
+            </div>
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200">ORANGE</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 grid lg:grid-cols-2 gap-4">
+
+        <div class="grid gap-4">
+          <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+            <div class="text-sm font-semibold">Projectinfo</div>
+            <div class="mt-3 grid md:grid-cols-2 gap-3 text-sm">
+              <div class="rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200">
+                <div class="text-slate-600 text-xs">Projectleider</div>
+                <div class="font-medium mt-1">N. Naam</div>
+              </div>
+              <div class="rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200">
+                <div class="text-slate-600 text-xs">Fase</div>
+                <div class="font-medium mt-1">Uitvoering</div>
+              </div>
+              <div class="rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200">
+                <div class="text-slate-600 text-xs">Periode</div>
+                <div class="font-medium mt-1">Jan–Mrt</div>
+              </div>
+              <div class="rounded-xl bg-slate-50 p-3 ring-1 ring-slate-200">
+                <div class="text-slate-600 text-xs">Klant</div>
+                <div class="font-medium mt-1">Klant X</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+            <div class="text-sm font-medium">Urenverbruik per rol (geboekt vs budget)</div>
+            <div class="mt-3 h-56 rounded-xl bg-slate-50 ring-1 ring-slate-200 p-2">
+              <canvas id="chart-project-uren" class="w-full h-full" role="img"
+                aria-label="Urenverbruik per rol"></canvas>
+            </div>
+            <div class="mt-2 rounded-xl bg-amber-50 ring-1 ring-amber-200 p-3">
+              <div class="flex items-start justify-between gap-3">
+                <div>
+                  <div class="text-xs font-semibold text-amber-800">Bronverschil (RISICO)</div>
+                  <div class="mt-1 text-sm text-amber-900">
+                    Keeping: <span id="project-keeping-hours" class="font-semibold">–</span> uur geboekt • Rompslomp:
+                    <span id="project-rompslomp-hours" class="font-semibold">–</span> uur gefactureerd (indicatief)
+                  </div>
+                  <div class="mt-1 text-xs text-amber-800/80">Toelichting: Rompslomp loopt <span
+                      class="font-semibold">voor</span> op Keeping met <span id="project-hours-delta"
+                      class="font-semibold">–</span> uur. Dit duidt op achterlopende urenregistratie en kan sturen op
+                    marge/voortgang vertekenen.</div>
+                </div>
+                <span
+                  class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-rose-100 text-rose-800 ring-rose-200">RISICO</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="text-sm font-medium">Keeping uren vs Rompslomp facturatie (% voortgang)</div>
+          <div class="mt-3 h-64 rounded-xl bg-slate-50 ring-1 ring-slate-200 p-2">
+            <canvas id="chart-project-plan" class="w-full h-full" role="img"
+              aria-label="Keeping uren versus Rompslomp facturatie"></canvas>
+          </div>
+          <div class="mt-2 text-xs text-slate-500">Keeping toont urenverbruik (indicatief). Rompslomp toont financiële
+            voortgang (facturatie). Als Rompslomp structureel vóórloopt, is er risico op achterlopende registratie.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6">
+
+        <div class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <div class="flex items-center justify-between">
+            <div class="text-sm font-semibold">⚠️ Signalen & acties</div>
+            <div class="text-xs text-slate-500">mock</div>
+          </div>
+          <ul class="mt-3 grid gap-2">
+
+            <li class="rounded-xl border border-slate-200 bg-white p-3 flex items-start gap-3">
+              <div class="mt-0.5">⚠️</div>
+              <div class="flex-1">
+                <div class="text-sm font-medium">Scope toename zonder budgetaanpassing</div>
+                <div class="text-xs text-slate-600 mt-1">Leg change request vast + herijk budget/contract.</div>
+              </div>
+              <span class="text-xs text-slate-500">Owner: PL</span>
+            </li>
+
+
+            <li class="rounded-xl border border-slate-200 bg-white p-3 flex items-start gap-3">
+              <div class="mt-0.5">⚠️</div>
+              <div class="flex-1">
+                <div class="text-sm font-medium">Uren > budget bij 62% voortgang</div>
+                <div class="text-xs text-slate-600 mt-1">Herplan: snij scope of voeg capaciteit/budget toe.</div>
+              </div>
+              <span class="text-xs text-slate-500">Owner: PMO</span>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-6">
+        <details class="rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 p-4">
+          <summary class="cursor-pointer select-none text-sm font-semibold text-slate-900">Demo notities (BI)</summary>
+          <div class="mt-3 grid gap-3 text-sm text-slate-700">
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Centrale vraag</div>
+              <div class="mt-1">Waarom staat dit project op oranje/rood en wat doen we eraan?</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Bronnen</div>
+              <div class="mt-1 text-xs text-slate-600">Keeping (uren, indicatief) • Rompslomp (financiële voortgang via
+                facturatie/forecast). Vergelijking is een stuur-signaal, geen boekhoudkundige reconciliatie.</div>
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Inzichten</div>
+              <ul class="mt-1 list-disc pl-5 space-y-1">
+                <li>Urenverbruik per rol (geboekt vs budget) → welke rol drukt de overschrijding.</li>
+                <li>Keeping uren vs Rompslomp facturatie (%) → als Rompslomp vóórloopt, is er risico op achterlopende
+                  urenregistratie (of afwijkende scope/contractafspraken).</li>
+              </ul>
+            </div>
+            <div class="text-xs text-slate-500">Kijkpunt: één rol structureel &gt; budget of Rompslomp &gt; Keeping
+              (structureel) → scope/rollenmix/capaciteit bijsturen én registratie/contractafspraken nalopen.</div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </main>
+  <footer class="mt-10 border-t bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-6 text-xs text-slate-600 flex flex-col gap-1">
+      <div>Prototype: statische HTML + Tailwind CDN. Data is mock.</div>
+      <div>Volgende stap: Blade components + Livewire state + echte API-koppeling.</div>
+    </div>
+  </footer>
+</body>
+
+</html>
