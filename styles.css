@@ -1,0 +1,192 @@
+/* De Selectie – prototype huisstijl (no-build, works with Tailwind CDN) */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+    --ds-bg: #eaf1ee;
+    --ds-surface: #f6faf8;
+    --ds-surface-strong: #eef4f1;
+    --ds-ink: #0b0f12;
+    --ds-muted: #475569;
+    --ds-border: rgba(15, 23, 42, 0.16);
+
+    --ds-brand: #0e4b57;
+    --ds-accent: #f2c14e;
+
+    --ds-ok: #2f8f73;
+    --ds-warning: #d6a21a;
+    --ds-danger: #d64545;
+
+    --ds-font-body: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    --ds-font-display: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+html,
+body {
+    background: var(--ds-bg) !important;
+    color: var(--ds-ink) !important;
+    font-family: var(--ds-font-body);
+}
+
+/* Headings: uppercase mono look from the website */
+h1,
+h2,
+h3,
+summary {
+    font-family: var(--ds-font-display) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Keep small UI text readable */
+.text-slate-600,
+.text-slate-500 {
+    color: var(--ds-muted) !important;
+}
+
+/* Surfaces: reduce the Tailwind "white cards" feel */
+.bg-white {
+    background-color: var(--ds-surface) !important;
+}
+
+/* Primary blocks (e.g. CTA cards) */
+.bg-slate-900 {
+    background-color: var(--ds-brand) !important;
+}
+
+.bg-slate-50,
+.bg-slate-100 {
+    background-color: var(--ds-surface-strong) !important;
+}
+
+/* Border/ring harmonization */
+.ring-slate-200 {
+    --tw-ring-color: var(--ds-border) !important;
+}
+
+.border-slate-200 {
+    border-color: var(--ds-border) !important;
+}
+
+.divide-slate-200> :not([hidden])~ :not([hidden]) {
+    border-color: var(--ds-border) !important;
+}
+
+/* Make everything a bit more "outlined" and less "soft" */
+.shadow-sm {
+    box-shadow: none !important;
+}
+
+/* Slightly sharper radii (website is more crisp) */
+.rounded-3xl {
+    border-radius: 18px !important;
+}
+
+.rounded-2xl {
+    border-radius: 14px !important;
+}
+
+.rounded-xl {
+    border-radius: 12px !important;
+}
+
+.rounded-lg {
+    border-radius: 10px !important;
+}
+
+/* Header polish */
+header {
+    border-color: var(--ds-border) !important;
+}
+
+.ds-mark {
+    background: var(--ds-ink) !important;
+    border-radius: 10px !important;
+}
+
+/* KPI status pill: no text, just a dot */
+.ds-status-badge {
+    padding: 10px !important;
+    min-width: 34px;
+    justify-content: center;
+}
+
+.ds-status-badge::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: currentColor;
+    display: inline-block;
+}
+
+/* Stronger outline for cards */
+.rounded-2xl.bg-white.ring-1 {
+    box-shadow: inset 0 0 0 2px var(--ds-border) !important;
+}
+
+/* Links: more editorial */
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+/* Neutralize Tailwind pill hover backgrounds in top-nav */
+.hover\:bg-slate-100:hover,
+.hover\:bg-slate-50:hover {
+    background-color: transparent !important;
+}
+
+/* Status badge palette */
+.bg-emerald-50 {
+    background-color: rgba(47, 143, 115, 0.12) !important;
+}
+
+.text-emerald-700 {
+    color: var(--ds-ok) !important;
+}
+
+.ring-emerald-200 {
+    --tw-ring-color: rgba(47, 143, 115, 0.35) !important;
+}
+
+.bg-amber-50 {
+    background-color: rgba(214, 162, 26, 0.14) !important;
+}
+
+.text-amber-700 {
+    color: var(--ds-warning) !important;
+}
+
+.ring-amber-200 {
+    --tw-ring-color: rgba(214, 162, 26, 0.38) !important;
+}
+
+.bg-rose-50 {
+    background-color: rgba(214, 69, 69, 0.12) !important;
+}
+
+.text-rose-700 {
+    color: var(--ds-danger) !important;
+}
+
+.ring-rose-200 {
+    --tw-ring-color: rgba(214, 69, 69, 0.36) !important;
+}
+
+/* Chart containers: subtle frame */
+canvas {
+    image-rendering: auto;
+}
+
+/* Utility for small disclaimers */
+.ds-disclaimer {
+    color: var(--ds-muted);
+    font-size: 12px;
+    line-height: 1.35;
+}

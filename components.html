@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Componenten – De Selectie</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body class="bg-slate-50 text-slate-900">
   <header class="sticky top-0 z-10 border-b bg-white/90 backdrop-blur">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-bold">DS</div>
+        <div class="h-9 w-9 rounded-xl bg-slate-900 text-white grid place-items-center font-bold ds-mark">DS</div>
         <div>
           <div class="font-semibold leading-tight">De Selectie – Dashboards</div>
           <div class="text-xs text-slate-600">Tailwind prototype (wireframe → UI)</div>
@@ -53,7 +54,8 @@
                 <div class="mt-1 text-xs text-slate-500">van 18 totaal</div>
               </div>
               <span
-                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-emerald-50 text-emerald-700 ring-emerald-200">GREEN</span>
+                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-emerald-50 text-emerald-700 ring-emerald-200 ds-status-badge"><span
+                  class="sr-only">GREEN</span></span>
             </div>
           </div>
 
@@ -65,7 +67,8 @@
                 <div class="mt-1 text-xs text-slate-500">>10% afwijking</div>
               </div>
               <span
-                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-rose-50 text-rose-700 ring-rose-200">RED</span>
+                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-rose-50 text-rose-700 ring-rose-200 ds-status-badge"><span
+                  class="sr-only">RED</span></span>
             </div>
           </div>
 
@@ -77,7 +80,8 @@
                 <div class="mt-1 text-xs text-slate-500">burn rate deze maand</div>
               </div>
               <span
-                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200">ORANGE</span>
+                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200 ds-status-badge"><span
+                  class="sr-only">ORANGE</span></span>
             </div>
           </div>
 
@@ -89,7 +93,8 @@
                 <div class="mt-1 text-xs text-slate-500">doel: 20%</div>
               </div>
               <span
-                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200">ORANGE</span>
+                class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ring-1 bg-amber-50 text-amber-700 ring-amber-200 ds-status-badge"><span
+                  class="sr-only">ORANGE</span></span>
             </div>
           </div>
 

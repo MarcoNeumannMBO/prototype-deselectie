@@ -1,14 +1,25 @@
 /* global window, document, Chart */
 (() => {
+    function cssVar(name, fallback) {
+        try {
+            const value = getComputedStyle(document.documentElement)
+                .getPropertyValue(name)
+                .trim();
+            return value || fallback;
+        } catch {
+            return fallback;
+        }
+    }
+
     const COLORS = {
-        green: "#16a34a",
-        orange: "#f59e0b",
-        red: "#e11d48",
-        slate700: "#334155",
-        slate500: "#64748b",
-        grid: "#e2e8f0",
-        line: "#0f172a",
-        fill: "rgba(15, 23, 42, 0.08)",
+        green: cssVar("--ds-ok", "#2f8f73"),
+        orange: cssVar("--ds-warning", "#d6a21a"),
+        red: cssVar("--ds-danger", "#d64545"),
+        slate700: cssVar("--ds-ink", "#0b0f12"),
+        slate500: cssVar("--ds-muted", "#475569"),
+        grid: "rgba(15, 23, 42, 0.12)",
+        line: cssVar("--ds-brand", "#0e4b57"),
+        fill: "rgba(14, 75, 87, 0.10)",
     };
 
     function setDefaults() {
@@ -16,10 +27,12 @@
         Chart.defaults.responsive = true;
         Chart.defaults.maintainAspectRatio = false;
         Chart.defaults.color = COLORS.slate700;
-        Chart.defaults.font.family =
-            "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji";
+        Chart.defaults.font.family = cssVar(
+            "--ds-font-body",
+            "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial"
+        );
         Chart.defaults.plugins.legend.display = false;
-        Chart.defaults.plugins.tooltip.backgroundColor = "rgba(15, 23, 42, 0.92)";
+        Chart.defaults.plugins.tooltip.backgroundColor = "rgba(11, 15, 18, 0.92)";
         Chart.defaults.plugins.tooltip.titleColor = "#fff";
         Chart.defaults.plugins.tooltip.bodyColor = "#fff";
         Chart.defaults.plugins.tooltip.displayColors = true;
