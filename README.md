@@ -1,28 +1,68 @@
-# De Selectie – Tailwind Dashboard Prototype
+# De Selectie – Dashboard Demo (prototype)
 
-Dit is een **statische** Tailwind omgeving (HTML) met alle dashboards + component-patronen.
-Doel: snel reviewen, wireframes valideren, en daarna 1-op-1 overzetten naar Laravel Blade + Livewire.
+Dit is een statische demo-omgeving (HTML) voor de dashboards van De Selectie.
+Doel: in één sessie laten zien welke stuurinformatie je uit twee SaaS-bronnen kunt halen, zonder backend/build.
 
-## Starten
-- Open `index.html` in je browser
-- Aanrader: serve lokaal via VS Code *Live Server* of `python -m http.server`
+## Wat is dit (en wat niet)
+- Demo-doel: snelle portfoliotriagering + projectbijsturing op basis van trends en signalen.
+- Techniek: statische HTML + Tailwind via CDN + Chart.js via CDN.
+- Data: volledig mock.
+- Belangrijk: Rompslomp (financieel) en Keeping (uren) sluiten in de praktijk niet perfect op elkaar aan.
+  Dit prototype maakt dat verschil expliciet en gebruikt het als stuur-signaal (trendmatig/indicatief), niet als boekhoudkundige reconciliatie.
 
-## Pagina's
-- `dashboards/overview.html`
-- `dashboards/project.html`
-- `dashboards/medewerker.html`
-- `dashboards/portfolio.html`
-- `dashboards/project-fin.html`
-- `dashboards/uren.html`
-- `components.html` (mini design system)
+## Snel starten
+Je kunt de HTML direct openen, maar voor scripts (Chart.js/mock data) is een lokale server het meest betrouwbaar.
 
-## Volgende stap (Laravel/Livewire)
-- Vervang placeholders door echte components:
-  - `x-dashboard-header`
-  - `x-kpi-card`
-  - `x-panel`
-  - `x-table`
-  - `x-signal-list`
-- Voeg Livewire state toe voor filters (periode, project, team).
+Optie A — VS Code Live Server
+- Open index.html en klik “Go Live”.
+
+Optie B — Python
+- Run: python -m http.server
+- Open: http://localhost:8000
+
+## Navigatie (demo-flow)
+- Startpunt: index.html
+- Dashboards:
+  - dashboards/overview.html — cockpit: statusverdeling + marge-trend (laatste 5 maanden)
+  - dashboards/project.html — projectdiagnose: uren per rol + Keeping vs Rompslomp voortgang (risico op achterlopende registratie)
+  - dashboards/project-fin.html — financiële status per project: triage + marge-trend
+  - dashboards/portfolio.html — financieel portfolio: marge + downside concentratie (risico-indicator)
+  - dashboards/medewerker.html — inzet/belasting: focus vs versnippering + facturabiliteit
+  - dashboards/uren.html — werkzaamheden/uren: waar gaat de tijd heen (tagging/discipline zichtbaar)
+- Componentenbibliotheek: components.html
+
+## BI-duiding in de UI
+Onder elk dashboard staat een inklapbare sectie “Demo notities (BI)”.
+Die is bedoeld om tijdens de demo hardop te kunnen uitleggen:
+- Centrale vraag
+- Bronnen (Rompslomp vs Keeping)
+- Wat je uit de KPI’s/charts mag concluderen
+- Kijkpunt: wanneer grijp je in?
+
+Extra documentatie:
+- BI-inzichten-per-dashboard.md
+
+## Waar pas je wat aan
+
+Mock data
+- js/mock-data.js bevat alle demo-data in window.MOCK_DATA.
+- Scenario’s (bijv. “Keeping loopt achter op Rompslomp”) zitten bewust in de mock data zodat je het verhaal kunt sturen.
+
+Charts
+- js/charts.js rendert alle Chart.js grafieken op basis van data-dashboard attributen.
+- Chart styling volgt de huisstijl via CSS-variabelen uit styles.css.
+
+Huisstijl
+- styles.css bevat de demo-huisstijl (fonts, kleuren, outlines) zodat alle pagina’s één geheel voelen.
+
+## Demo-tips (praktisch)
+- Positioneer het verschil tussen bronnen als voordeel: “we zien vroegtijdig waar registratie/realiteit uit elkaar loopt”.
+- Gebruik trends boven absolute getallen: vooral bij forecast vs indicatief.
+- Houd het simpel: 1–2 charts per dashboard en max 4 KPI’s bovenin.
+
+## Volgende stap (na de demo)
+- Laravel Blade + Livewire: componentiseren van header/KPI cards/panels/tables.
+- Echte koppelingen: Rompslomp + Keeping via API’s (met expliciete mappingregels en datakwaliteitschecks).
+- Drilldowns: van portfolio → project → rol/activiteit → oorzaak.
 
 Gegenereerd: 2026-02-04
