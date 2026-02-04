@@ -1,0 +1,10 @@
+services:
+  de-selectie-prototype:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: de-selectie-tailwind-prototype:latest
+    container_name: de-selectie-prototype
+    ports:
+      - "8080:80"
+    restart: unless-stopped

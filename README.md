@@ -20,6 +20,16 @@ Optie B — Python
 - Run: python -m http.server
 - Open: http://localhost:8000
 
+Optie C — Docker Compose (homelab)
+
+Dit is een statische site; Docker is dus alleen een simpele webserver (nginx).
+
+- Start (build + run): docker compose up -d --build
+- Open: http://<server-ip>:8080
+- Stop: docker compose down
+
+Andere poort gebruiken? Pas in docker-compose.yml de mapping aan (bijv. "8090:80").
+
 ## Navigatie (demo-flow)
 - Startpunt: index.html
 - Dashboards:
