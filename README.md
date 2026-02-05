@@ -30,6 +30,28 @@ Dit is een statische site; Docker is dus alleen een simpele webserver (nginx).
 
 Andere poort gebruiken? Pas in docker-compose.yml de mapping aan (bijv. "8090:80").
 
+## Deploy naar server via GitHub
+
+Als je server een clone van deze repo heeft, kun je updates simpel uitrollen met `git pull`.
+
+1) Lokaal (naar GitHub)
+- Check: `git status`
+- Commit: `git add -A && git commit -m "Update demo"`
+- Push: `git push origin main`
+
+2) Server (pull + herstart)
+- Ga naar de repo-map: `cd /pad/naar/de-selectie-tailwind-prototype`
+- Check branch: `git branch --show-current` (verwacht: `main`)
+- Pull: `git pull origin main`
+
+Als je via Docker draait:
+- Rebuild + run: `docker compose up -d --build`
+
+Troubleshooting (meest voorkomend)
+- Server heeft lokale wijzigingen: `git status` → dan `git stash -u` of commit die changes eerst.
+- Verkeerde branch: `git checkout main` en daarna opnieuw pull.
+- SSH/credentials: zorg dat de server toegang heeft tot de GitHub repo (SSH key of token).
+
 ## Navigatie (demo-flow)
 - Startpunt: index.html
 - Dashboards:
