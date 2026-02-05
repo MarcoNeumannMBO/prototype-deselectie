@@ -34,7 +34,7 @@
         const desktopNav = header.querySelector("nav.ds-topnav");
         if (!desktopNav) return;
 
-        if (header.querySelector(".ds-mobile-toggle") || header.querySelector(".ds-mobile-panel")) return;
+        if (header.querySelector(".ds-mobile-toggle") || document.querySelector(".ds-mobile-panel")) return;
 
         const toggleButton = document.createElement("button");
         toggleButton.type = "button";
@@ -57,11 +57,34 @@
         // Insert the button right before the desktop nav.
         desktopNav.parentNode.insertBefore(toggleButton, desktopNav);
 
+        const backdrop = document.createElement("div");
+        backdrop.className = "md:hidden ds-mobile-backdrop";
+        backdrop.setAttribute("aria-hidden", "true");
+
         const panel = document.createElement("div");
-        panel.className = "md:hidden ds-mobile-panel border-t bg-white/90 backdrop-blur";
+        panel.className = "md:hidden ds-mobile-panel";
+        panel.setAttribute("role", "dialog");
+        panel.setAttribute("aria-modal", "true");
+        panel.setAttribute("aria-label", "Menu");
 
         const panelInner = document.createElement("div");
-        panelInner.className = "mx-auto max-w-7xl px-4 py-3";
+        panelInner.className = "px-4 py-4";
+
+        const panelHeader = document.createElement("div");
+        panelHeader.className = "flex items-center justify-between gap-3 pb-3 mb-3 border-b border-slate-200";
+
+        const panelTitle = document.createElement("div");
+        panelTitle.className = "text-xs font-semibold text-slate-500 uppercase tracking-wide";
+        panelTitle.textContent = "Menu";
+
+        const closeBtn = document.createElement("button");
+        closeBtn.type = "button";
+        closeBtn.className = "inline-flex items-center justify-center rounded-xl ring-1 ring-slate-200 px-3 py-2 text-sm bg-white/70 hover:bg-white";
+        closeBtn.setAttribute("aria-label", "Sluit menu");
+        closeBtn.textContent = "✕";
+
+        panelHeader.appendChild(panelTitle);
+        panelHeader.appendChild(closeBtn);
 
         const mobileNav = document.createElement("nav");
         mobileNav.className = "ds-topnav ds-mobile-nav flex flex-col gap-1 text-sm";
@@ -91,17 +114,21 @@
             }
         }
 
+        panelInner.appendChild(panelHeader);
         panelInner.appendChild(mobileNav);
         panel.appendChild(panelInner);
 
-        // Place panel right below the header row.
-        header.appendChild(panel);
+        // Drawer + backdrop live at the end of body
+        document.body.appendChild(backdrop);
+        document.body.appendChild(panel);
 
         const setExpanded = (expanded) => {
             toggleButton.setAttribute("aria-expanded", expanded ? "true" : "false");
             panel.classList.toggle("is-open", expanded);
+            backdrop.classList.toggle("is-open", expanded);
             toggleIcon.textContent = expanded ? "✕" : "☰";
             toggleButton.setAttribute("aria-label", expanded ? "Sluit menu" : "Open menu");
+            document.documentElement.classList.toggle("ds-nav-lock", expanded);
         };
 
         const close = () => setExpanded(false);
@@ -118,6 +145,11 @@
             toggle();
         });
 
+        closeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            close();
+        });
+
         // Close when clicking a nav link.
         mobileNav.addEventListener("click", (e) => {
             const target = /** @type {HTMLElement} */ (e.target);
@@ -129,12 +161,9 @@
             if (e.key === "Escape") close();
         });
 
-        // Close on outside click.
-        document.addEventListener("click", (e) => {
-            const target = /** @type {HTMLElement} */ (e.target);
-            if (!target) return;
-            if (!panel.classList.contains("is-open")) return;
-            if (target.closest(".ds-mobile-panel") || target.closest(".ds-mobile-toggle")) return;
+        // Backdrop click closes.
+        backdrop.addEventListener("click", (e) => {
+            e.preventDefault();
             close();
         });
 
