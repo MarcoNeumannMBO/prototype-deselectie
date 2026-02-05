@@ -1,5 +1,8 @@
 /* global window, document */
 (() => {
+    // Debug/version marker (helps verify caching on server deployments)
+    window.__DS_NAV_VERSION = "2026-02-05-drawer";
+
     function samePath(a, b) {
         const strip = (p) => String(p || "").replace(/\/+$/, "");
         return strip(a) === strip(b);
