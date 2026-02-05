@@ -5,12 +5,9 @@
         return strip(a) === strip(b);
     }
 
-    function init() {
-        const nav = document.querySelector(".ds-topnav");
-        if (!nav) return;
-
+    function markActiveLinks(root) {
         const currentPath = window.location.pathname;
-        const links = Array.from(nav.querySelectorAll("a[href]"));
+        const links = Array.from(root.querySelectorAll("a.ds-nav-link[href]"));
 
         for (const link of links) {
             const href = link.getAttribute("href");
@@ -31,6 +28,127 @@
                 link.classList.remove("ds-nav-active");
             }
         }
+    }
+
+    function createMobileMenu(header) {
+        const desktopNav = header.querySelector("nav.ds-topnav");
+        if (!desktopNav) return;
+
+        if (header.querySelector(".ds-mobile-toggle") || header.querySelector(".ds-mobile-panel")) return;
+
+        const toggleButton = document.createElement("button");
+        toggleButton.type = "button";
+        toggleButton.className =
+            "md:hidden ds-mobile-toggle inline-flex items-center justify-center rounded-xl ring-1 ring-slate-200 px-3 py-2 text-sm bg-white/70 hover:bg-white";
+        toggleButton.setAttribute("aria-expanded", "false");
+        toggleButton.setAttribute("aria-label", "Menu");
+
+        const toggleLabel = document.createElement("span");
+        toggleLabel.textContent = "Menu";
+
+        const toggleIcon = document.createElement("span");
+        toggleIcon.className = "ml-2";
+        toggleIcon.setAttribute("aria-hidden", "true");
+        toggleIcon.textContent = "☰";
+
+        toggleButton.appendChild(toggleLabel);
+        toggleButton.appendChild(toggleIcon);
+
+        // Insert the button right before the desktop nav.
+        desktopNav.parentNode.insertBefore(toggleButton, desktopNav);
+
+        const panel = document.createElement("div");
+        panel.className = "md:hidden ds-mobile-panel border-t bg-white/90 backdrop-blur";
+
+        const panelInner = document.createElement("div");
+        panelInner.className = "mx-auto max-w-7xl px-4 py-3";
+
+        const mobileNav = document.createElement("nav");
+        mobileNav.className = "ds-topnav ds-mobile-nav flex flex-col gap-1 text-sm";
+        mobileNav.setAttribute("aria-label", "Hoofdnavigatie");
+
+        let lastWasDivider = false;
+        for (const node of Array.from(desktopNav.childNodes)) {
+            if (node.nodeType !== Node.ELEMENT_NODE) continue;
+            const element = /** @type {HTMLElement} */ (node);
+
+            if (element.tagName.toLowerCase() === "a") {
+                const a = /** @type {HTMLAnchorElement} */ (element.cloneNode(true));
+                a.className = "ds-nav-link px-3 py-2 rounded-xl";
+                mobileNav.appendChild(a);
+                lastWasDivider = false;
+                continue;
+            }
+
+            if (element.classList.contains("ds-nav-divider")) {
+                if (!lastWasDivider) {
+                    const hr = document.createElement("div");
+                    hr.className = "my-2 h-px bg-slate-200";
+                    hr.setAttribute("aria-hidden", "true");
+                    mobileNav.appendChild(hr);
+                    lastWasDivider = true;
+                }
+            }
+        }
+
+        panelInner.appendChild(mobileNav);
+        panel.appendChild(panelInner);
+
+        // Place panel right below the header row.
+        header.appendChild(panel);
+
+        const setExpanded = (expanded) => {
+            toggleButton.setAttribute("aria-expanded", expanded ? "true" : "false");
+            panel.classList.toggle("is-open", expanded);
+            toggleIcon.textContent = expanded ? "✕" : "☰";
+            toggleButton.setAttribute("aria-label", expanded ? "Sluit menu" : "Open menu");
+        };
+
+        const close = () => setExpanded(false);
+        const open = () => setExpanded(true);
+
+        const toggle = () => {
+            const expanded = toggleButton.getAttribute("aria-expanded") === "true";
+            if (expanded) close();
+            else open();
+        };
+
+        toggleButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            toggle();
+        });
+
+        // Close when clicking a nav link.
+        mobileNav.addEventListener("click", (e) => {
+            const target = /** @type {HTMLElement} */ (e.target);
+            if (target && target.closest && target.closest("a")) close();
+        });
+
+        // Close on Escape.
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") close();
+        });
+
+        // Close on outside click.
+        document.addEventListener("click", (e) => {
+            const target = /** @type {HTMLElement} */ (e.target);
+            if (!target) return;
+            if (!panel.classList.contains("is-open")) return;
+            if (target.closest(".ds-mobile-panel") || target.closest(".ds-mobile-toggle")) return;
+            close();
+        });
+
+        // Ensure initial state is collapsed (for CSS animation setup)
+        setExpanded(false);
+
+        // Mark active links inside the generated mobile nav too
+        markActiveLinks(mobileNav);
+    }
+
+    function init() {
+        const header = document.querySelector("header");
+        if (header) createMobileMenu(header);
+        markActiveLinks(document);
     }
 
     if (document.readyState === "loading") {
